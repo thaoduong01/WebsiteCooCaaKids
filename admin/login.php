@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    ob_start();
+
+    if((isset($_POST['signin']))&&($_POST['signin'])){
+        $user = $_POST['Username'];
+        $pass = $_POST['Password'];
+
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,10 +58,10 @@
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="" method="post">
+                            <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
                                 <div class="form-group">
-                                    <label>Email Address</label>
-                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
+                                    <label>User Name</label>
+                                    <input class="au-input au-input--full" type="text" name="username" placeholder="Username">
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
@@ -64,7 +75,7 @@
                                         <a href="#">Forgotten Password?</a>
                                     </label>
                                 </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit" name="signin">sign in</button>
                                 <div class="social-login-content">
                                     <div class="social-button">
                                         <button class="au-btn au-btn--block au-btn--blue m-b-20">sign in with facebook</button>
