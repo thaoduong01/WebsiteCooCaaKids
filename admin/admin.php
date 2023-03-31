@@ -2,6 +2,9 @@
      session_start();
      ob_start();
 
+
+     if(isset($_SESSION['Role'])&& ($_SESSION['Role']==0)){
+
      include "../model/connect.php";
      include "../model/category.php";
      include "../model/product.php";
@@ -104,6 +107,15 @@
                     include "product/product.php";
                     break;
 
+               case 'login':
+                    if(isset($_POST['login']) && ($_POST['login'])){
+                         $username = $_POST['Username'];
+                         $pass = $_POST['Password'];
+                    }
+
+               case 'logout':
+                    unset($_SESSION['Role']);
+                    header('Location: login1.php');
                
                default:
                     include "index.php";
@@ -113,5 +125,11 @@
      }else{
           include "index.php";
      }
+
+     include "inc/footer.php";
+
+}else{
+     header('Location: login1.php');
+}
 
 ?>

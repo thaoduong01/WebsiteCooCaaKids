@@ -409,12 +409,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <?php
-                                                    if(isset($_GET['action']) && $_GET['action'] == 'logout'){
-                                                        Session::destroy();
-                                                    }
-                                                ?>
-                                                <a href="?action=logout">
+                                                <a href="admin.php?act=logout">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>

@@ -1,17 +1,23 @@
 <?php
-	include "../controller/login_c.php";	
-?>
-<?php
-	$class = new login_c();
-	if($_SERVER['REQUEST_METHOD'] === 'POST'){
-		$username = $_POST['username'];
-		$pass = md5($_POST['pass']);
+    session_start();
+    ob_start();
 
-		$login_check = $class->login_admin($username, $pass);
-	}
-?>
+    include('../model/connect.php');
+    include('../model/user.php');
 
-<!doctype html>
+    if((isset($_POST['login'])) && ($_POST['login'])){
+        $username = $_POST['Username'];
+        $pass = $_POST['Pass'];
+
+        $Role = checkuser($username, $pass);
+
+        $_SESSION['Role'] = $Role;
+        if($Role == 1) header('Location: admin.php');
+        else header('Location: header.php');
+        
+    }
+?>
+<!Doctype html>
 <html lang="en">
   <head>
   	<title>Login</title>
@@ -32,11 +38,6 @@
 				<div class="col-md-6 text-center mb-5">
 					<h2 class="heading-section">Login</h2>
 					<span style="color:red;">
-						<?php
-							if(isset($login_check)){
-								echo $login_check;
-							}
-						?>
 					</span>
 				</div>
 			</div>
@@ -44,7 +45,7 @@
 				<div class="col-md-6 col-lg-4">
 					<div class="login-wrap p-0">
 		      	<h3 class="mb-4 text-center">Have an account?</h3>
-		      	<form action="login.php" method="post" class="signin-form">
+		      	<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" class="signin-form">
 		      		<div class="form-group">
 		      			<input type="text" class="form-control" placeholder="Username" name="username">
 		      		</div>
