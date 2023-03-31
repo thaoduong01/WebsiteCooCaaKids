@@ -1,6 +1,6 @@
 <?php
-        include ('inc/header.php');
-    ?>
+    include ('inc/header.php');
+?>
 
 
             <!-- MAIN CONTENT-->
@@ -11,16 +11,7 @@
                             <div class="col-md-12">
                                 <h3 class="title-5 m-b-35">add category</h3>
                                 <div class="card-body card-block">
-                                        <form action="admin.php?act=addcategories" method="post" enctype="multipart/form-data" class="form-horizontal">   
-                                            <!-- <div class="row form-group">
-                                                <div class="col col-md-3">
-                                                    <label for="text-input" class=" form-control-label">Category ID</label>
-                                                </div>
-                                                <div class="col-12 col-md-9">
-                                                    <input type="text" id="c_id" name="c_id" placeholder="ID" class="form-control" disabled>
-                                                    <small class="form-text text-muted">This is a category id</small>
-                                                </div>
-                                            </div> -->
+                                        <form action="admin.php?act=addcat" method="post" enctype="multipart/form-data" class="form-horizontal">   
                                             <div class="row form-group">
                                                 <div class="col col-md-3">
                                                     <label for="email-input" class=" form-control-label">Category Name</label>
@@ -89,6 +80,7 @@
                                                         <span class="au-checkmark"></span>
                                                     </label>
                                                 </th>
+                                                <th>STT</th>
                                                 <th>ID</th>
                                                 <th>Name</th>
                                                 <th></th>
@@ -97,10 +89,11 @@
                                         
                                         <tbody>
                                             <?php
-                                                var_dump($kq); //kiem tra da len db chua
+                                                // var_dump($kq); //kiem tra da len db chua
                                             ?>
                                             <?php
                                                 if(isset($kq) && (count($kq)>0)){
+                                                    $stt = 1;
                                                     foreach($kq as $category){
                                                         echo '<tr class="tr-shadow">
                                                                 <td>
@@ -109,19 +102,21 @@
                                                                         <span class="au-checkmark"></span>
                                                                     </label>
                                                                 </td>
-                                                                <td>'.$id['Category_ID'].'</td>
+                                                                <td>'.$stt.'</td>
+                                                                <td>'.$category['Category_ID'].'</td>
                                                                 <td>
-                                                                    <span class="block-email">'.$name['Name'].'</span>
+                                                                    <span class="block-email">'.$category['CatName'].'</span>
                                                                 </td>
-                                                                <td><a href="admin.php?delete_c&Category_ID='.$name['Category_ID'].'">Delete</a></td>
+                                                                <td><a href="admin.php?delcat&Category_ID='.$category['Category_ID'].'">Delete</a></td>
+                                                                <td><a href="admin.php?updatecat&Category_ID='.$category['Category_ID'].'">Update</a></td>
                                                                 
                                                                 <td>
                                                                     <div class="table-data-feature">
                                                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                                            <i class="zmdi zmdi-edit"><a href="admin.php?update_c&id='.$name['Category_ID'].'"></i></a>
+                                                                            <i class="zmdi zmdi-edit"><a href="admin.php?update_c&id='.$category['Category_ID'].'"></i></a>
                                                                         </button>
                                                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                                            <i class="zmdi zmdi-delete"><a href="admin.php?delete_c&id='.$name['Category_ID'].'"></i></a>
+                                                                            <i class="zmdi zmdi-delete"><a href="admin.php?delc&id='.$category['Category_ID'].'"></i></a>
                                                                         </button>
                                                                         <button class="item" data-toggle="tooltip" data-placement="top" title="More">
                                                                             <i class="zmdi zmdi-more"></i>
@@ -130,6 +125,8 @@
                                                                 </td>
                                                             </tr>
                                                             <tr class="spacer"></tr>';
+
+                                                            $stt++;
                                                     }
                                                 }
                                             ?>

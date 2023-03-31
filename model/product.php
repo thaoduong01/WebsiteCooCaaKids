@@ -1,8 +1,8 @@
 <?php
-    function getall_c(){
+    function getall_p(){
         $conn = connect();
         
-        $stmt = $conn->prepare("SELECT * FROM Category");
+        $stmt = $conn->prepare("SELECT * FROM Product");
 
         $stmt->execute();
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC); //tra ve dang mang
@@ -11,7 +11,7 @@
         return $kq;
     }
 
-    function list_c($hot){
+    function list_p($hot){
         $sql = "SELECT * FROM Category WHERE 1 ";
         if($hot==1){
             $sql.="AND hot=1";
@@ -28,7 +28,7 @@
         return $kq;
     }
 
-    function getonecat($id){
+    function getone($id){
         $conn = connect();
 
         $stmt = $conn->prepare("SELECT * FROM Category WHERE Category_ID=".$id);
@@ -41,16 +41,16 @@
 
     }
 
-    function addcat($c_name){
+    function insert_product($idcat, $name, $price, $Img){
         $conn = connect();
-        $sql = "INSERT INTO Category(CatName) VALUES ('$c_name')";
+        $sql = "INSERT INTO Product(Name, Category_ID, Price, Img) VALUES ('$idcat', '$name', '$price', '$Img')";
 
         $conn->exec($sql);
 
 
     }
 
-    function delete_c($id){
+    function delete($id){
         $conn = connect();
 
         $sql = "DELETE FROM Category WHERE Category_ID=" .$id;
