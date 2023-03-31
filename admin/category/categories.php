@@ -9,8 +9,44 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
+                                <h3 class="title-5 m-b-35">add category</h3>
+                                <div class="card-body card-block">
+                                        <form action="admin.php?act=addcategories" method="post" enctype="multipart/form-data" class="form-horizontal">   
+                                            <!-- <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="text-input" class=" form-control-label">Category ID</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text" id="c_id" name="c_id" placeholder="ID" class="form-control" disabled>
+                                                    <small class="form-text text-muted">This is a category id</small>
+                                                </div>
+                                            </div> -->
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="email-input" class=" form-control-label">Category Name</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text" id="c_name" name="c_name" placeholder="Name" class="form-control">
+                                                    <small class="help-block form-text">Please enter name category</small>
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <button type="submit" class="btn btn-primary btn-sm" name="themmoi">
+                                                    <i class="fa fa-dot-circle-o"></i> Submit
+                                                </button>
+                                            </div>
+
+                                            <?php 
+                                                if(isset($thongbao) && ($thongbao != ""))
+                                                    echo $thongbao;
+                                                else echo $error;
+                                            ?>
+                                           </form>
+                                    </div>
+
                                 <!-- DATA TABLE -->
-                                <h3 class="title-5 m-b-35">data table</h3>
+                                <h3 class="title-5 m-b-35">list category</h3>
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-left">
                                         <div class="rs-select2--light rs-select2--md">
@@ -33,9 +69,7 @@
                                             <i class="zmdi zmdi-filter-list"></i>filters</button>
                                     </div>
                                     <div class="table-data__tool-right">
-                                        <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                            <i class="zmdi zmdi-plus"><a href="admin.php?act=addcategories">add item</a></i></button>
-                                        <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
+                                       <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
                                             <select class="js-select2" name="type">
                                                 <option selected="selected">Export</option>
                                                 <option value="">Option 1</option>
@@ -62,40 +96,43 @@
                                         </thead>
                                         
                                         <tbody>
-                                        <?php   
-                                            foreach($list_c as $category){
-                                                echo '<tr class="tr-shadow">
-                                                        <td>
-                                                            <label class="au-checkbox">
-                                                                <input type="checkbox">
-                                                                <span class="au-checkmark"></span>
-                                                            </label>
-                                                        </td>
-                                                        <td>'.$Category_ID.'</td>
-                                                        <td>
-                                                            <span class="block-email">'.$Name.'</span>
-                                                        </td>
-                                                        
-                                                        <td>
-                                                            <div class="table-data-feature">
-                                                                <!-- <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                                                    <i class="zmdi zmdi-mail-send"></i>
-                                                                </button> -->
-                                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                                    <i class="zmdi zmdi-edit"></i>
-                                                                </button>
-                                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                                    <i class="zmdi zmdi-delete"></i>
-                                                                </button>
-                                                                <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                                    <i class="zmdi zmdi-more"></i>
-                                                                </button>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="spacer"></tr>';
-                                            }
-                                        ?>
+                                            <?php
+                                                var_dump($kq); //kiem tra da len db chua
+                                            ?>
+                                            <?php
+                                                if(isset($kq) && (count($kq)>0)){
+                                                    foreach($kq as $category){
+                                                        echo '<tr class="tr-shadow">
+                                                                <td>
+                                                                    <label class="au-checkbox">
+                                                                        <input type="checkbox">
+                                                                        <span class="au-checkmark"></span>
+                                                                    </label>
+                                                                </td>
+                                                                <td>'.$id['Category_ID'].'</td>
+                                                                <td>
+                                                                    <span class="block-email">'.$name['Name'].'</span>
+                                                                </td>
+                                                                <td><a href="admin.php?delete_c&Category_ID='.$name['Category_ID'].'">Delete</a></td>
+                                                                
+                                                                <td>
+                                                                    <div class="table-data-feature">
+                                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                                            <i class="zmdi zmdi-edit"><a href="admin.php?update_c&id='.$name['Category_ID'].'"></i></a>
+                                                                        </button>
+                                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                                            <i class="zmdi zmdi-delete"><a href="admin.php?delete_c&id='.$name['Category_ID'].'"></i></a>
+                                                                        </button>
+                                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="More">
+                                                                            <i class="zmdi zmdi-more"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="spacer"></tr>';
+                                                    }
+                                                }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>

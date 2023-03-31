@@ -1,3 +1,8 @@
+<?php
+    include "../lib/session.php";
+    // Session::checkSession();
+       
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -404,7 +409,12 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <?php
+                                                    if(isset($_GET['action']) && $_GET['action'] == 'logout'){
+                                                        Session::destroy();
+                                                    }
+                                                ?>
+                                                <a href="?action=logout">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>
