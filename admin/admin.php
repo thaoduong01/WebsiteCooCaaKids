@@ -32,16 +32,15 @@
                          include "category/updatecat.php";
                     }
      
-                    if(isset($_POST['Category_ID'])){
-                         $id = $_POST['Category_ID'];
-                         $c_name = $_POST['CatName'];
+                    if(isset($_POST['edit'])){
+                         $id = $_POST['id'];
+                         $c_name = $_POST['c_name'];
      
                          updatecat($id,$c_name);
      
                          $kq = getall_c();
                          include "category/categories.php";
-                    }
-                    //lay list cat
+                     }
                     
                     break;
 

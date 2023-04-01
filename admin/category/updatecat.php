@@ -31,20 +31,22 @@ include ('inc/header.php');
                             </small>
                         </div>
                         <input type="hidden" name="id" value="<?=$kq1[0]['Category_ID']?>">
-                    </div>
 
-                    <div>
-                        <button type="submit" class="btn btn-primary btn-sm" name="edit" style="text-align: center;">
-                            <i class="fa fa-dot-circle-o"></i> Submit
-                        </button>
+                        <div>
+                            <button type="submit" class="btn btn-primary btn-sm" name="edit">
+                                <i class="fa fa-dot-circle-o"></i> Submit
+                            </button>
+                        </div>
+
+
                     </div>
 
                     
+                    
                     </form>
             </div>
-
-        <!-- DATA TABLE -->
-        <h3 class="title-5 m-b-35">list category</h3>
+<!-- DATA TABLE -->
+<h3 class="title-5 m-b-35">list category</h3>
         <div class="table-data__tool">
             <div class="table-data__tool-left">
                 <div class="rs-select2--light rs-select2--md">
@@ -114,8 +116,8 @@ include ('inc/header.php');
                                         <td>
                                             <span class="block-email">'.$category['CatName'].'</span>
                                         </td>
-                                        <td><a href="admin.php?delc&Category_ID='.$category['Category_ID'].'">Delete</a></td>
-                                        <td><a href="admin.php?update_c&Category_ID='.$category['Category_ID'].'">Delete</a></td>
+                                        <td><a href="admin.php?act=delcat&Category_ID='.$category['Category_ID'].'">Delete</a></td>
+                                        <td><a href="admin.php?act=updatecat&Category_ID='.$category['Category_ID'].'">Update</a></td>
                                         
                                         <td>
                                             <div class="table-data-feature">
@@ -123,7 +125,7 @@ include ('inc/header.php');
                                                     <i class="zmdi zmdi-edit"><a href="admin.php?update_c&id='.$category['Category_ID'].'"></i></a>
                                                 </button>
                                                 <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                    <i class="zmdi zmdi-delete"><a href="admin.php?delc&id='.$category['Category_ID'].'"></i></a>
+                                                    <i class="zmdi zmdi-delete"><a href="admin.php?act=delcat&Category_ID='.$category['Category_ID'].'"></i></a>
                                                 </button>
                                                 <button class="item" data-toggle="tooltip" data-placement="top" title="More">
                                                     <i class="zmdi zmdi-more"></i>
