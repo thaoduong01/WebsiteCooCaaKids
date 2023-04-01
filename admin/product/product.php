@@ -59,7 +59,7 @@ include ('inc/header.php');
                     </div>
 
                     <div>
-                        <button type="submit" class="btn btn-primary btn-sm" name="themmoi">
+                        <button type="submit" class="btn btn-primary btn-sm" name="add">
                             <i class="fa fa-dot-circle-o"></i> Submit
                         </button>
                     </div>
@@ -140,16 +140,16 @@ include ('inc/header.php');
                                         <td>'.$product['Name'].'</td>
                                         <td>'.$product['Price'].'VND</td>
                                         <td><img src="'.$product['Img'].'" width="80px"/></td>
-                                        <td><a href="admin.php?delcat&Category_ID='.$product['ID'].'">Delete</a></td>
-                                        <td><a href="admin.php?updatecat&Category_ID='.$product['ID'].'">Update</a></td>
+                                        <td><a href="admin.php?act=delete&ID='.$product['ID'].'">Delete</a></td>
+                                        <td><a href="admin.php?act=updatecat&Category_ID='.$product['ID'].'">Update</a></td>
                                         
                                         <td>
                                             <div class="table-data-feature">
                                                 <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                    <i class="zmdi zmdi-edit"><a href="admin.php?update_c&id='.$product['Category_ID'].'"></i></a>
+                                                    <i class="zmdi zmdi-edit"><a href="admin.php?act=update_p&id='.$product['Category_ID'].'"></i></a>
                                                 </button>
                                                 <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                    <i class="zmdi zmdi-delete"><a href="admin.php?delc&id='.$product['Category_ID'].'"></i></a>
+                                                    <i class="zmdi zmdi-delete"><a href="admin.php?act=product&id='.$product['Category_ID'].'"></i></a>
                                                 </button>
                                                 <button class="item" data-toggle="tooltip" data-placement="top" title="More">
                                                     <i class="zmdi zmdi-more"></i>

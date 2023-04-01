@@ -53,7 +53,7 @@
     function delete($id){
         $conn = connect();
 
-        $sql = "DELETE FROM Category WHERE Category_ID=" .$id;
+        $sql = "DELETE FROM Product WHERE ID=" .$id;
 
         $conn->exec($sql);
 

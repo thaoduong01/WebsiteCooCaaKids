@@ -50,6 +50,16 @@
 
     }
 
+    function updatecat($id, $c_name){
+        $conn = connect();
+        $sql = "UPDATE Category SET CatName = '$c_name' WHERE Category_ID = ".$id;
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute();
+
+    }
+
     function delete_c($id){
         $conn = connect();
 

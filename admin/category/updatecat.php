@@ -11,32 +11,35 @@ include ('inc/header.php');
     <div class="col-md-12">
         <h3 class="title-5 m-b-35">update category</h3>
         <?php
-            echo var_dump($kq1);
+            // echo var_dump($kq1);
             
         ?>
         <div class="card-body card-block">
-                <form action="admin.php?act=addcategories" method="post" enctype="multipart/form-data" class="form-horizontal">   
+                <form action="admin.php?act=updatecat" method="post" enctype="multipart/form-data" class="form-horizontal">   
                     <div class="row form-group">
                         <div class="col col-md-3">
                             <label for="email-input" class=" form-control-label">Category Name</label>
                         </div>
-                        <div class="col-12 col-md-9">
-                            <input type="text" id="c_name" name="c_name" placeholder="Name" class="form-control">
-                            <small class="help-block form-text">Please enter name category</small>
+                        <div class="col-12 col-md-6">
+                            <input type="text" id="c_name" name="c_name" placeholder="Name" class="form-control" value="<?=$kq1[0]['CatName']?>"/>
+                            <small class="help-block form-text">
+                            <?php 
+                                if(isset($thongbao) && ($thongbao != ""))
+                                    echo $thongbao;
+                                else echo $error;
+                            ?>
+                            </small>
                         </div>
+                        <input type="hidden" name="id" value="<?=$kq1[0]['Category_ID']?>">
                     </div>
 
                     <div>
-                        <button type="submit" class="btn btn-primary btn-sm" name="themmoi">
+                        <button type="submit" class="btn btn-primary btn-sm" name="edit" style="text-align: center;">
                             <i class="fa fa-dot-circle-o"></i> Submit
                         </button>
                     </div>
 
-                    <?php 
-                        if(isset($thongbao) && ($thongbao != ""))
-                            echo $thongbao;
-                        else echo $error;
-                    ?>
+                    
                     </form>
             </div>
 
