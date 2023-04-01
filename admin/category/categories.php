@@ -27,7 +27,8 @@ include ('inc/header.php');
                             </small>
                         </div>
 
-                        <input type="button" class="btn btn-primary btn-sm" name="themmoi" value="ADD" style="background-color: blue; border: none; color: white; padding: 4px 8px; text-decoration: none; margin: 4px 2px; cursor: pointer;">
+                        <input type="submit" name="themmoi" value="ADD" style="background-color: blue; border: none; color: white; padding: 4px 8px; text-decoration: none; margin: 4px 2px; cursor: pointer;">
+
                     </div>
                    
                     </form>

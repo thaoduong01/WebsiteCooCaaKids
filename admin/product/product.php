@@ -44,8 +44,8 @@ include ('inc/header.php');
                             <label for="select" class=" form-control-label">Price</label>
                         </div>
                         <div class="col-12 col-md-6">
-                            <input type="text" id="" name="price" placeholder="Name" class="form-control">
-                            <small class="help-block form-text">Please enter name category</small>
+                            <input type="text" id="" name="price" placeholder="Price" class="form-control">
+                            <small class="help-block form-text">Please enter price category</small>
                         </div>
                     </div>
 
@@ -58,18 +58,23 @@ include ('inc/header.php');
                         </div>
                     </div>
 
-                    <div>
+                    <input type="submit" name="add" value="ADD" style="background-color: blue; border: none; color: white; padding: 4px 8px; text-decoration: none; margin: 4px 2px; cursor: pointer;">
+
+
+
+                    <!-- <div>
                         <button type="submit" class="btn btn-primary btn-sm" name="add">
                             <i class="fa fa-dot-circle-o"></i> Submit
                         </button>
-                    </div>
+                    </div> -->
 
                     <?php 
                         if(isset($thongbao) && ($thongbao != ""))
                             echo $thongbao;
                         else echo $error;
                     ?>
-                    </form>
+                </form>
+
             </div>
         <!-- DATA TABLE -->
         <h3 class="title-5 m-b-35">list product</h3>
@@ -171,6 +176,3 @@ include ('inc/header.php');
         <!-- END DATA TABLE -->
     </div>
 </div>
-<?php
-    include ('inc/footer.php');
-?>

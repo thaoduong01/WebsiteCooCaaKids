@@ -41,13 +41,18 @@
 
     }
 
-    function insert_product($idcat, $name, $price, $Img){
+    function insert_product($name, $idcat, $price, $img){
         $conn = connect();
-        $sql = "INSERT INTO Product(Name, Category_ID, Price, Img) VALUES ('$idcat', '$name', '$price', '$Img')";
-
-        $conn->exec($sql);
-
-
+    
+        if(empty($img)){  // kiểm tra nếu không có hình ảnh
+            $sql = "INSERT INTO Product(Name, Category_ID, Price) VALUES ('$name', $idcat, $price)";
+        } else {
+            $sql = "INSERT INTO Product(Name, Category_ID, Price, Img) VALUES ('$name', $idcat, $price, '$img')";
+        }
+    
+        $stmt = $conn->prepare($sql);
+    
+        $stmt->execute();
     }
 
     function delete($id){
