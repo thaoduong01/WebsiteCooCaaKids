@@ -20,22 +20,18 @@ include ('inc/header.php');
                             <input type="text" id="" name="c_name" placeholder="Name" class="form-control">
                             <small class="help-block form-text">
                             <?php
-                                if(isset($thongbao))
+                                if(isset($thongbao) && ($thongbao != ""))
                                     echo $thongbao;
                                 else echo $error;
                             ?>
                             </small>
                         </div>
-                    </div>
 
-                    <div>
-                        <button type="submit" class="btn btn-primary btn-sm" name="themmoi">
-                            <i class="fa fa-dot-circle-o"></i> Submit
-                        </button>
+                        <input type="button" name="themmoi" value="ADD" style="background-color: #04AA6D; border: none; color: white; padding: 4px 8px; text-decoration: none; margin: 4px 2px; cursor: pointer;">
                     </div>
-
-                    
+                   
                     </form>
+
             </div>
 
         <!-- DATA TABLE -->

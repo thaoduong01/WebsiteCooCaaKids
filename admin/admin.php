@@ -47,8 +47,8 @@
 
                case 'addcat':
                     if(isset($_POST['themmoi']) && ($_POST['themmoi'])){
-                         $c_name = $_POST['c_name'];
-                         addcat($c_name);
+                              $c_name = $_POST['c_name'];
+                              addcat($c_name);
                     }
      
                     $thongbao = "Thêm danh mục thành công!";
