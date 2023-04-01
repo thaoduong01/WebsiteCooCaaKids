@@ -109,11 +109,6 @@
 
                          // move_uploaded_file($_FILES["img"]["tmp_name"], $target_file);
 
-
-
-                    
-                         if($_FILES['img']['name']!="") $Img=$_FILES['img']['name']; 
-                         else $hinh="";
                     
                          insert_product($idcat, $name, $price, $Img);
                     }
