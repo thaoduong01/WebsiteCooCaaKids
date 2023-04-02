@@ -239,8 +239,9 @@
                //      }
 
                case 'logout':
-                    unset($_SESSION['Role']);
-                    header('Location: signin.php');
+                    if(isset($_SESSION['Role']))
+                         unset($_SESSION['Role']);
+                    header('Location: login.php');
                
                default:
                     include "index.php";

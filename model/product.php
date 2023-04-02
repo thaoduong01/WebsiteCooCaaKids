@@ -67,4 +67,62 @@
 
 
     }
+
+
+    function getall($idcat = 0, $key = ""){
+        $conn = connect();
+        
+        $sql ="SELECT * FROM Product WHERE 1 AND Category_ID=" .$idcat ;
+        // if($idcat > 0) 
+        //     $sql.="AND Category_ID=" .$idcat;
+        // if($key != "")
+        //     $sql.="AND Name LIKE '%".$key."%'";
+        // $sql.="ORDER BY ID DESC";
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute();
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC); //tra ve dang mang
+
+        $kq = $stmt->fetchAll(); //lay tat ca
+        return $kq;
+    }
+
+    function showpro($list){
+        foreach($list as $product){
+            if($product['Price'] == 0){
+                $price = "Updating";
+            }else{
+                if($product['Old_price']>0)
+                $price = ' <span class="text-primary me-1">'.$product['Price'].' VND</span>
+                        <span class="text-body text-decoration-line-through">'.$product['Old_price'].'</span>';
+                // $price = '<del>'.$product['Old_price'].'VND</del>'.$product['Price'].'VND';
+                else $price = $product['Price'].'VND';
+            }
+           
+            
+            echo '<div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="product-item">
+                        <div class="position-relative bg-light overflow-hidden">
+                            <img class="img-fluid w-100" src="../uploaded/'.$product['Img'].'" alt="">
+                            <div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">New</div>
+                        </div>
+                        <div class="text-center p-4">
+                            <a class="d-block h5 mb-2" href="">'.$product['Name'].'</a>
+                            <span class="text-primary me-1">'.$price.' VND</span>
+                            <span class="text-body text-decoration-line-through">'.$product['Old_price'].'</span>
+                        </div>
+                        <div class="d-flex border-top">
+                            <small class="w-50 text-center border-end py-2">
+                                <a class="text-body" href=""><i class="fa fa-eye text-primary me-2"></i>View detail</a>
+                            </small>
+                            <small class="w-50 text-center py-2">
+                                <a class="text-body" href=""><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                ';
+        }
+    }
 ?>

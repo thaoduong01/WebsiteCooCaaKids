@@ -26,6 +26,7 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
@@ -44,6 +45,7 @@
         <div class="top-bar row gx-0 align-items-center d-none d-lg-flex">
             <div class="col-lg-6 px-5 text-start">
                 <small><i class="fa fa-map-marker-alt me-2"></i>Vinhomes Grand Park, Q9, HCM City, VND</small>
+                <br>
                 <small class="ms-4"><i class="fa fa-envelope me-2"></i>coocaakids@gmail.com</small>
             </div>
             <div class="col-lg-6 px-5 text-end">
@@ -68,23 +70,62 @@
                     <a href="about.php" class="nav-item nav-link">About Us</a>
                     <a href="product.php" class="nav-item nav-link">Products</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                        <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Category</a>
                         <div class="dropdown-menu m-0">
-                            <a href="blog.php" class="dropdown-item">Blog Grid</a>
+                            <?php
+                                foreach($listcat as $category){
+                                    echo '<a href="index.php?act=product&Category_ID='.$category['Category_ID'].'" class="dropdown-item">'.$category['CatName'].'</a>';
+                                }
+                            ?>
+                            <!-- <a href="blog.php" class="dropdown-item">Blog Grid</a>
                             <a href="feature.php" class="dropdown-item">Our Features</a>
                             <a href="testimonial.php" class="dropdown-item">Testimonial</a>
-                            <a href="404.php" class="dropdown-item">404 Page</a>
+                            <a href="404.php" class="dropdown-item">404 Page</a> -->
                         </div>
                     </div>
                     <a href="contact.php" class="nav-item nav-link">Contact Us</a>
+
+                    <?php
+                        if(isset($_SESSION['username']) && ($_SESSION['username']!="")){
+                            echo '<li><a href="index.php?act=userinfo">'.$_SESSION['uername'].'</a></li>';
+                            echo '<li><a href="index.php?act=logout">Logout</a></li>';
+                        }else{
+                    ?>
+                        <a href="index.php?act=signup" class="nav-item nav-link">SignUp</a>
+                        <a href="index.php?act=signin" class="nav-item nav-link">SignIn</a>
+                    <?php } ?>
                 </div>
                 <div class="d-none d-lg-flex ms-2">
                     <a class="btn-sm-square bg-white rounded-circle ms-3" href="">
                         <small class="fa fa-search text-body"></small>
                     </a>
-                    <a class="btn-sm-square bg-white rounded-circle ms-3" href="">
+                    <!-- <a class="btn-sm-square bg-white rounded-circle ms-3" href="">
                         <small class="fa fa-user text-body"></small>
-                    </a>
+                    </a> -->
+                    
+                    <div class="dropdown">
+                        <a class="btn-sm-square bg-white rounded-circle ms-3 dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <small class="fa fa-user text-body"></small>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                        <?php
+                            if(isset($_SESSION['username']) && ($_SESSION['username']!="")){
+                                echo '<li><a class="dropdown-item" href="index.php?act=userinfo">'.$_SESSION['username'].'</a></li>';
+                                echo '<li><a class="dropdown-item" href="index.php?act=logout">Logout</a></li>';
+                            }else{
+                        ?>
+                            <!-- <li><a class="dropdown-item" href="#">Profile</a></li> -->
+                            <!-- <li><a class="dropdown-item" href="#">Settings</a></li> -->
+                            <li><hr class="dropdown-divider"></li>
+                            <!-- <li><a class="dropdown-item" href="#">Logout</a></li> -->
+
+                            <li><a href="index.php?act=signup" class="nav-item nav-link">SignUp</a></li>
+                            <li><a href="index.php?act=signin" class="nav-item nav-link">SignIn</a></li>
+
+                            <?php } ?>
+                        </ul>
+                    </div>
+
                     <a class="btn-sm-square bg-white rounded-circle ms-3" href="">
                         <small class="fa fa-shopping-bag text-body"></small>
                     </a>

@@ -382,3 +382,26 @@
 .footer .copyright a:hover {
     color: var(--primary);
 }
+
+
+.dropdown-toggle::after {
+    display: none;
+}
+.dropdown-menu {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-item:hover {
+background-color: #F8F8F8;
+}
+
+.dropdown-divider {
+margin: 0.5rem 0;
+border: none;
+height: 1px;
+background-color: #E9E9E9;
+}
+
+  
