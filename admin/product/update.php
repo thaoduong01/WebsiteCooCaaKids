@@ -12,13 +12,14 @@ include ('inc/header.php');
 
         <h3 class="title-5 m-b-35">add product</h3>
             <div class="card-body card-block">
-                <form action="admin.php?act=addproduct" method="post" enctype="multipart/form-data" class="form-horizontal">    
+                <form action="admin.php?act=update" method="post" enctype="multipart/form-data" class="form-horizontal">    
+                    <input type="hidden" name="id" value="<?=$sp[0]['ID']?>">
                     <div class="row form-group">
                         <div class="col col-md-3">
                             <label for="email-input" class=" form-control-label">Product Name</label>
                         </div>
                         <div class="col-12 col-md-6">
-                            <input type="text" id="" name="name" placeholder="Name" class="form-control">
+                            <input type="text" id="" name="name" placeholder="Name" class="form-control" value="<?=$sp[0]['Name']?>">
                             <small class="help-block form-text">Please enter name category</small>
                         </div>
                     </div>
@@ -30,9 +31,13 @@ include ('inc/header.php');
                             <select name="idcat" id="" class="form-control">
                                 <option value="0">Please category</option>
                                 <?php
+                                $idcatcur = $sp[0]['Category_ID'];
                                     if(isset($listcat)){
                                         foreach($listcat as $category){
-                                            echo '<option value="'.$category['Category_ID'].'">'.$category['CatName'].'</option>';
+                                            if($category['Category_ID']==$idcatcur)
+                                                echo '<option value="'.$category['Category_ID'].'" selected>'.$category['CatName'].'</option>';
+                                            else
+                                                echo '<option value="'.$category['Category_ID'].'">'.$category['CatName'].'</option>';
                                         }
                                     }
                                 ?>
@@ -44,7 +49,7 @@ include ('inc/header.php');
                             <label for="select" class=" form-control-label">Price</label>
                         </div>
                         <div class="col-12 col-md-6">
-                            <input type="text" id="" name="price" placeholder="Price" class="form-control">
+                            <input type="text" id="" name="price" placeholder="Price" class="form-control" value="<?=$sp[0]['Price']?>">
                             <small class="help-block form-text">Please enter price category</small>
                         </div>
                     </div>
@@ -56,9 +61,12 @@ include ('inc/header.php');
                         <div class="col-12 col-md-6">
                             <input type="file" id="" name="img" class="form-control-file">
                         </div>
+                        <div class="col-12 col-md-3">
+                            <img src="<?=$sp[0]['Img']?>" width = "100px">
+                        </div>
                     </div>
 
-                    <input type="submit" name="add" value="ADD" style="background-color: blue; border: none; color: white; padding: 4px 8px; text-decoration: none; margin: 4px 2px; cursor: pointer;">
+                    <input type="submit" name="edit" value="EDIT" style="background-color: blue; border: none; color: white; padding: 4px 8px; text-decoration: none; margin: 4px 2px; cursor: pointer;">
 
 
 
@@ -151,10 +159,10 @@ include ('inc/header.php');
                                         <td>
                                             <div class="table-data-feature">
                                                 <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                    <i class="zmdi zmdi-edit"><a href="admin.php?act=update&id='.$product['ID'].'"></i></a>
+                                                    <i class="zmdi zmdi-edit"><a href="admin.php?act=update_p&id='.$product['ID'].'"></i></a>
                                                 </button>
                                                 <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                    <i class="zmdi zmdi-delete"><a href="admin.php?act=delete&id='.$product['ID'].'"></i></a>
+                                                    <i class="zmdi zmdi-delete"><a href="admin.php?act=product&id='.$product['ID'].'"></i></a>
                                                 </button>
                                                 <button class="item" data-toggle="tooltip" data-placement="top" title="More">
                                                     <i class="zmdi zmdi-more"></i>

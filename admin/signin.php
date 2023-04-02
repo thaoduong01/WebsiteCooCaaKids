@@ -9,11 +9,14 @@
         $username = $_POST['Username'];
         $pass = $_POST['Pass'];
 
-        $Role = checkuser($username, $pass);
+        $role = checkuser($username, $pass);
 
-        $_SESSION['Role'] = $Role;
-        if($Role == 1) header('Location: admin.php');
-        else header('Location: header.php');
+        $_SESSION['Role'] = $role;
+        if($role == 0) header('Location: admin.php');
+		else {
+			$txt_error = "Username or Pass khong ton tai";
+		 }
+        //  header('Location: signin.php');
         
     }
 ?>
@@ -53,8 +56,15 @@
 	              <input id="password-field" type="password" class="form-control" placeholder="Password" name="pass">
 	              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 	            </div>
+				<div class="message text-danger">
+					<?php
+						if(isset($txt_error) && ($txt_error != "")){
+							echo $txt_error;
+						}
+					?>
+				</div>
 	            <div class="form-group">
-	            	<button type="submit" name="login" class="form-control btn btn-primary submit px-3">Sign In</button>
+	            	<button type="submit" name="login" class="form-control btn btn-primary submit px-3" value="Submit">Sign In</button>
 	            </div>
 	            <div class="form-group d-md-flex">
 	            	<div class="w-50">
@@ -80,9 +90,9 @@
 	</section>
 
 	<script src="js/jquery.min.js"></script>
-  <script src="js/popper.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
+	<script src="js/popper.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/pass.js"></script>
 
 	</body>
 </html>

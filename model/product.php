@@ -11,27 +11,10 @@
         return $kq;
     }
 
-    function list_p($hot){
-        $sql = "SELECT * FROM Category WHERE 1 ";
-        if($hot==1){
-            $sql.="AND hot=1";
-        }
-        $sql.=" ORDER BY SORT DESC";
-
-        $conn = connect();
-        $stmt = $conn->prepare($sql);
-
-        $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_ASSOC); //tra ve dang man
-
-        $kq = $stmt->fetchAll(); //lay tat ca
-        return $kq;
-    }
-
-    function getone($id){
+    function getid($id){
         $conn = connect();
 
-        $stmt = $conn->prepare("SELECT * FROM Category WHERE Category_ID=".$id);
+        $stmt = $conn->prepare("SELECT * FROM Product WHERE ID =".$id);
 
         $stmt->execute();
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC); //tra ve dang mang
@@ -53,6 +36,26 @@
         $stmt = $conn->prepare($sql);
     
         $stmt->execute();
+    }
+
+    function update($id, $name, $price, $img, $idcat){
+        $conn = connect();
+        
+        if($img==""){
+            $sql = "UPDATE Product SET Name = '$name', Price = '$price', Category_ID = '$idcat' WHERE ID = ".$id;
+        }else{
+            $sql = "UPDATE Product SET Name = '$name', Price = '$price', Category_ID = '$idcat', Img = '$img' WHERE ID = ".$id;
+        }
+    
+        try {
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            $thongbao = "Cập nhật danh mục thành công!";
+        } catch (PDOException $e) {
+            $thongbao = "Cập nhật danh mục không thành công. Lỗi: " . $e->getMessage();
+        }
+    
+        return $thongbao;
     }
 
     function delete($id){

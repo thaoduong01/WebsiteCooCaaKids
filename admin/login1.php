@@ -16,7 +16,7 @@
 
         if($Role == 0) header('Location: admin.php');
         else {
-           $txt_error = "Username or Pass not match";
+           $txt_error = "Username or Pass khong ton tai";
         }
         // header('Location: login1.php');
         
