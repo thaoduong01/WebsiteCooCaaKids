@@ -6,13 +6,13 @@
     include('../model/user.php');
 
     if((isset($_POST['login'])) && ($_POST['login'])){
-        $username = $_POST['Username'];
-        $pass = $_POST['Pass'];
+        $username = $_POST['username'];
+        $pass = $_POST['pass'];
 
         $role = checkuser($username, $pass);
 
         $_SESSION['Role'] = $role;
-        if($role == 0) header('Location: admin.php');
+        if($role == 1) header('Location: admin.php');
 		else {
 			$txt_error = "Username or Pass khong ton tai";
 		 }

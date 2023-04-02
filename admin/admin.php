@@ -3,7 +3,7 @@
      ob_start();
 
 
-     if(isset($_SESSION['Role'])&& ($_SESSION['Role']==0)){
+     if(isset($_SESSION['Role'])&& ($_SESSION['Role']==1)){
 
      include "../model/connect.php";
      include "../model/category.php";
@@ -240,7 +240,7 @@
 
                case 'logout':
                     unset($_SESSION['Role']);
-                    header('Location: login1.php');
+                    header('Location: signin.php');
                
                default:
                     include "index.php";
