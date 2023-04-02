@@ -88,42 +88,75 @@
                     break;
                
                case 'addproduct':
-                    if((isset($_POST['add'])) && ($_POST['add'])){
+                    if(isset($_POST['add']) && $_POST['add'] == 'ADD') {
                          $name = $_POST['name'];
                          $idcat = $_POST['idcat'];
                          $price = $_POST['price'];
-     
+                      
                          $target_dir = "../uploaded/";
-     
-                         if (is_dir($target_dir)) {
-                         echo "Đã truy cập thành công tới thư mục $target_dir";
-                         } else {
-                         echo "Không truy cập được tới thư mục $target_dir";
+                         if(!file_exists($target_dir)) {
+                            mkdir($target_dir);
                          }
-     
+                      
                          $target_file = $target_dir . basename($_FILES["img"]["name"]);
                          $img = $target_file;
-                         $uploadOk = 1; //upload dc
-     
+                         $uploadOk = 1;
+                      
                          $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-     
-                         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                         && $imageFileType != "gif" ) {
-                              // echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-                              $uploadOk = 0; //ko upload
+                      
+                         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+                            $uploadOk = 0;
                          }
-     
-                         if(move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)){
-                              echo "Upload img successfully!";
-                         }else{
-                              echo "Upload img failed!";
+                      
+                         if($uploadOk == 0) {
+                            echo "Sorry, your file was not uploaded.";
+                         } else {
+                            if(move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
+                               echo "The file ". htmlspecialchars( basename( $_FILES["img"]["name"])). " has been uploaded.";
+                            } else {
+                               echo "Sorry, there was an error uploading your file.";
+                            }
+                      
+                            insert_product($name, $idcat, $price, $img);
                          }
+                      }
+                      
+                    // if((isset($_POST['add'])) && ($_POST['add'])){
+                    //      $name = $_POST['name'];
+                    //      $idcat = $_POST['idcat'];
+                    //      $price = $_POST['price'];
      
-                         // if($_FILES['img']['name']!="") $Img=$_FILES['img']['name']; 
-                         // else $Img="";
+                    //      $target_dir = "../uploaded/";
+     
+                    //      if (is_dir($target_dir)) {
+                    //      echo "Đã truy cập thành công tới thư mục $target_dir";
+                    //      } else {
+                    //      echo "Không truy cập được tới thư mục $target_dir";
+                    //      }
+     
+                    //      $target_file = $target_dir . basename($_FILES["img"]["name"]);
+                    //      $img = $target_file;
+                    //      $uploadOk = 1; //upload dc
+     
+                    //      $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+     
+                    //      if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                    //      && $imageFileType != "gif" ) {
+                    //           // echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                    //           $uploadOk = 0; //ko upload
+                    //      }
+     
+                    //      if(move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)){
+                    //           echo "Upload img successfully!";
+                    //      }else{
+                    //           echo "Upload img failed!";
+                    //      }
+     
+                    //      // if($_FILES['img']['name']!="") $Img=$_FILES['img']['name']; 
+                    //      // else $Img="";
                     
-                         insert_product($name, $idcat, $price, $img);
-                    }
+                    //      insert_product($name, $idcat, $price, $img);
+                    // }
                     $listcat = getall_c();
 
                     $kq = getall_p();
