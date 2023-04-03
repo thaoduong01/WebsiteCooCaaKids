@@ -95,7 +95,7 @@
             }else{
                 if($product['Old_price']>0)
                 $price = ' <span class="text-primary me-1">'.$product['Price'].' VND</span>
-                        <span class="text-body text-decoration-line-through">'.$product['Old_price'].'</span>';
+                        <span class="text-body text-decoration-line-through">'.$product['Old_price'].'VND</span>';
                 // $price = '<del>'.$product['Old_price'].'VND</del>'.$product['Price'].'VND';
                 else $price = $product['Price'].'VND';
             }
@@ -109,12 +109,11 @@
                         </div>
                         <div class="text-center p-4">
                             <a class="d-block h5 mb-2" href="">'.$product['Name'].'</a>
-                            <span class="text-primary me-1">'.$price.' VND</span>
-                            <span class="text-body text-decoration-line-through">'.$product['Old_price'].'</span>
+                            <span class="text-primary me-1">'.$price.'</span>
                         </div>
                         <div class="d-flex border-top">
                             <small class="w-50 text-center border-end py-2">
-                                <a class="text-body" href=""><i class="fa fa-eye text-primary me-2"></i>View detail</a>
+                                <a class="text-body" href="index.php?act=detail&ID='.$product['ID'].'"><i class="fa fa-eye text-primary me-2"></i>View detail</a>
                             </small>
                             <small class="w-50 text-center py-2">
                                 <a class="text-body" href=""><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
@@ -124,5 +123,19 @@
                 </div>
                 ';
         }
+    }
+
+    function showdetail($id){
+        $conn = connect();
+        
+        $sql ="SELECT * FROM Product WHERE 1";
+        if($id > 0) $sql.=" AND ID=".$id; 
+        $stmt = $conn->prepare($sql);
+
+        $stmt->execute();
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC); //tra ve dang mang
+
+        $kq = $stmt->fetch(); //lay 1
+        return $kq;
     }
 ?>

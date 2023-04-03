@@ -284,15 +284,12 @@
                     
                     break;
 
-               // case 'login':
-               //      if(isset($_POST['login']) && ($_POST['login'])){
-               //           $username = $_POST['Username'];
-               //           $pass = $_POST['Password'];
-               //      }
-
                case 'logout':
-                    if(isset($_SESSION['Role']))
+                    if(isset($_SESSION['Role'])){
                          unset($_SESSION['Role']);
+                         unset($_SESSION['iduser']);
+                         unset($_SESSION['username']);
+                    }
                     header('Location: login.php');
                
                default:
@@ -308,7 +305,7 @@
      include "inc/footer.php";
 
 }else{
-     header('Location: signin.php');
+     header('Location: login.php');
 }
 
 ?>

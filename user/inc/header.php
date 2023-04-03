@@ -26,6 +26,11 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- JS của Bootstrap 5 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
     
 
     <!-- Template Stylesheet -->
@@ -84,10 +89,9 @@
                         </div>
                     </div>
                     <a href="contact.php" class="nav-item nav-link">Contact Us</a>
-
                     <?php
-                        if(isset($_SESSION['username']) && ($_SESSION['username']!="")){
-                            echo '<li><a href="index.php?act=userinfo">'.$_SESSION['uername'].'</a></li>';
+                        if(isset($_SESSION['username']) && ($_SESSION['username'] != "")){
+                            echo '<li><a href="index.php?act=userinfo">'.$_SESSION['username'].'</a></li>';
                             echo '<li><a href="index.php?act=logout">Logout</a></li>';
                         }else{
                     ?>
@@ -114,10 +118,10 @@
                                 echo '<li><a class="dropdown-item" href="index.php?act=logout">Logout</a></li>';
                             }else{
                         ?>
-                            <!-- <li><a class="dropdown-item" href="#">Profile</a></li> -->
-                            <!-- <li><a class="dropdown-item" href="#">Settings</a></li> -->
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <!-- <li><a class="dropdown-item" href="#">Logout</a></li> -->
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
 
                             <li><a href="index.php?act=signup" class="nav-item nav-link">SignUp</a></li>
                             <li><a href="index.php?act=signin" class="nav-item nav-link">SignIn</a></li>
@@ -126,7 +130,7 @@
                         </ul>
                     </div>
 
-                    <a class="btn-sm-square bg-white rounded-circle ms-3" href="">
+                    <a class="btn-sm-square bg-white rounded-circle ms-3" href="index.php?act=viewcart">
                         <small class="fa fa-shopping-bag text-body"></small>
                     </a>
                 </div>

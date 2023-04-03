@@ -30,6 +30,17 @@
 
                     $kq = getuserinfo($username, $pass);
 
+                    // if($kq){
+                    //     $_SESSION['username'] = $kq['Username'];
+                    //     $_SESSION['id'] = $kq['ID'];
+                    //     if($kq['Role'] == 1) {
+                    //         header('Location: ../admin/admin.php');
+                    //     }
+                    //     header('Location: index.php');
+                    // }else{
+                    //     $txt_error = "Username or Pass khong ton tai";
+                    // }
+
                     $role = $kq[0]['Role'];
                     if($role == 1){
                         $_SESSION['Role'] = $role;
@@ -37,14 +48,14 @@
                     }else{
                         $_SESSION['Role'] = $role;
                         $_SESSION['iduser'] = $kq[0]['ID'];
-                        $_SESSION['user'] = $kq[0]['username'];
+                        $_SESSION['user'] = $kq[0]['Username'];
                         header('Location: index.php');
                     }
             
                 }
                
             case 'signin':
-                include "view/signin.php";
+                include "view/login.php";
                 break;
 
             case 'logout':
@@ -61,6 +72,18 @@
                 $list = getall($idcat, "");
                 include "view/product.php";
                 break;
+
+            case 'detail':
+               if(isset($_GET['ID']) && ($_GET['ID'] > 0)){
+                    $detail = showdetail($id);
+               }
+
+                include "view/product_detail.php";
+                break;
+
+            case 'viewcart':
+
+
             
             default:
                 include "home.php";
