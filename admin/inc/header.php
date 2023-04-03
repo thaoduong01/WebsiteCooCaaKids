@@ -170,10 +170,10 @@
                             <a href="admin.php?act=categories">
                                 <i class="fas fa-table"></i>Quản Lý Danh Mục</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="admin.php?act=supplier">
                                 <i class="far fa-check-square"></i>Quản Lý Nhà Cung Cấp</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="admin.php?act=user">
                                 <i class="far fa-check-square"></i>Quản Lý User</a>

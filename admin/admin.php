@@ -14,7 +14,7 @@
      if(isset($_GET['act'])){
           $act = $_GET['act'];
           switch($act){
-               //category
+               //CATEGORY
 
                case 'categories':
                     //list
@@ -66,7 +66,59 @@
                     include "category/categories.php";
                     break;
 
-               //product
+               //SUPPLIER
+
+               case 'supplier':
+                    //list
+                    $kq = getall_s();
+                    include "supplier/list_s.php";
+                    break;
+               
+               case 'update_s':
+                    //lay 1 record dung id truyen
+                    if(isset($_GET['Supplier_ID'])){
+                         $id = $_GET['Supplier_ID'];
+                         $kq1 = getones($id);
+     
+                         $kq = getall_s();
+                         include "supplier/update_s.php";
+                    }
+     
+                    if(isset($_POST['edit'])){
+                         $id = $_POST['id'];
+                         $name = $_POST['name'];
+     
+                         updatecat($id,$name);
+     
+                         $kq = getall_s();
+                         include "supplier/list_s.php";
+                         }
+                    
+                    break;
+
+               case 'add_s':
+                    if(isset($_POST['themmoi']) && ($_POST['themmoi'])){
+                              $name = $_POST['name'];
+                              addcat($name);
+                    }
+     
+                    $thongbao = "Thêm danh mục thành công!";
+                    $error = "Thêm danh mục không thành công!";
+     
+                    $kq = getall_s();
+                    include "supplier/list_s.php";
+                    break;
+
+               case 'del_s':
+                    if(isset($_GET['Supplier_ID'])){
+                         $id = $_GET['Supplier_ID'];
+                         delete_c($id);
+                    }
+                    $kq = getall_s();
+                    include "supplier/list_s.php";
+                    break;
+
+               //PRODUCT
 
                case 'product':
                     

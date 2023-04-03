@@ -11,6 +11,7 @@
     include "../model/product.php";
 
     $listcat = getall_c();
+    $sphome1 = getall(0, "");
    
 
     if(isset($_GET['act'])){

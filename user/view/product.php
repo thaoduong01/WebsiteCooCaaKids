@@ -23,7 +23,7 @@
         <div id="tab-1" class="tab-pane fade show p-0 active">
             <div class="row g-4">
                 <?php
-                    $showpro
+                        showpro($list);
                     // foreach($list as $product){
                     //     if($product['Price'] == 0){
                     //         $price = "Updating";

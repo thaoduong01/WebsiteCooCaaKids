@@ -72,12 +72,12 @@
     function getall($idcat = 0, $key = ""){
         $conn = connect();
         
-        $sql ="SELECT * FROM Product WHERE 1 AND Category_ID=" .$idcat ;
-        // if($idcat > 0) 
-        //     $sql.="AND Category_ID=" .$idcat;
-        // if($key != "")
-        //     $sql.="AND Name LIKE '%".$key."%'";
-        // $sql.="ORDER BY ID DESC";
+        $sql ="SELECT * FROM Product WHERE 1";
+        if($idcat > 0) 
+            $sql.=" AND Category_ID=" .$idcat;
+        if($key != "")
+            $sql.=" AND Name LIKE '%".$key."%'";
+        $sql.=" ORDER BY ID DESC";
 
         $stmt = $conn->prepare($sql);
 
@@ -88,8 +88,8 @@
         return $kq;
     }
 
-    function showpro($list){
-        foreach($list as $product){
+    function showpro($listpro){
+        foreach($listpro as $product){
             if($product['Price'] == 0){
                 $price = "Updating";
             }else{

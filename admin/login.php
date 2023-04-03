@@ -9,16 +9,34 @@
         $username = $_POST['username'];
         $pass = $_POST['pass'];
 
-        $role = checkuser($username, $pass);
+		$kq = getuserinfo($username, $pass);
 
-        $_SESSION['Role'] = $role;
-        if($role == 1) header('Location: admin.php');
-		else {
+		$role = $kq[0]['Role'];
+
+		if ($role == 1) {
+			$_SESSION['Role'] = $role;
+			header('Location: ../admin/admin.php');
+		} else if (!empty($kq)) {
+			$_SESSION['Role'] = $role;
+			$_SESSION['iduser'] = $kq[0]['ID'];
+			$_SESSION['user'] = $kq[0]['username'];
+			header('Location: ../user/index.php');
+		} else {
 			$txt_error = "Username or Pass khong ton tai";
-		 }
+		}
+		
+		 // $role = checkuser($username, $pass);
+
+        // $_SESSION['Role'] = $role;
+        // if($role == 1) header('Location: admin.php');
+		// else {
+		// 	$txt_error = "Username or Pass khong ton tai";
+		//  }
         //  header('Location: login.php');
         
     }
+
+
 ?>
 <!Doctype html>
 <html lang="en">

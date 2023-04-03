@@ -9,75 +9,44 @@ include ('inc/header.php');
 <div class="container-fluid">
 <div class="row">
     <div class="col-md-12">
-
-        <h3 class="title-5 m-b-35">add product</h3>
-            <div class="card-body card-block">
-                <form action="admin.php?act=addproduct" method="post" enctype="multipart/form-data" class="form-horizontal">    
+        <h3 class="title-5 m-b-35">update category</h3>
+        <?php
+            // echo var_dump($kq1);
+            
+        ?>
+        <div class="card-body card-block">
+                <form action="admin.php?act=updatecat" method="post" enctype="multipart/form-data" class="form-horizontal">   
                     <div class="row form-group">
                         <div class="col col-md-3">
-                            <label for="email-input" class=" form-control-label">Product Name</label>
+                            <label for="email-input" class=" form-control-label">Category Name</label>
                         </div>
                         <div class="col-12 col-md-6">
-                            <input type="text" id="" name="name" placeholder="Name" class="form-control">
-                            <small class="help-block form-text">Please enter name category</small>
+                            <input type="text" id="c_name" name="c_name" placeholder="Name" class="form-control" value="<?=$kq1[0]['CatName']?>"/>
+                            <small class="help-block form-text">
+                            <?php 
+                                if(isset($thongbao) && ($thongbao != ""))
+                                    echo $thongbao;
+                                else echo $error;
+                            ?>
+                            </small>
                         </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col col-md-3">
-                            <label for="select" class=" form-control-label">Category Name</label>
+                        <input type="hidden" name="id" value="<?=$kq1[0]['Category_ID']?>">
+
+                        <div>
+                            <button type="submit" class="btn btn-primary btn-sm" name="edit">
+                                <i class="fa fa-dot-circle-o"></i> Submit
+                            </button>
                         </div>
-                        <div class="col-12 col-md-6">
-                            <select name="idcat" id="" class="form-control">
-                                <option value="0">Please category</option>
-                                <?php
-                                    if(isset($listcat)){
-                                        foreach($listcat as $category){
-                                            echo '<option value="'.$category['Category_ID'].'">'.$category['CatName'].'</option>';
-                                        }
-                                    }
-                                ?>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col col-md-3">
-                            <label for="select" class=" form-control-label">Price</label>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <input type="text" id="" name="price" placeholder="Price" class="form-control">
-                            <small class="help-block form-text">Please enter price category</small>
-                        </div>
+
+
                     </div>
 
-                    <div class="row form-group">
-                        <div class="col col-md-3">
-                            <label for="file-input" class=" form-control-label">Images</label>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <input type="file" id="" name="img" class="form-control-file">
-                        </div>
-                    </div>
-
-                    <input type="submit" name="add" value="ADD" style="background-color: blue; border: none; color: white; padding: 4px 8px; text-decoration: none; margin: 4px 2px; cursor: pointer;">
-
-
-
-                    <!-- <div>
-                        <button type="submit" class="btn btn-primary btn-sm" name="add">
-                            <i class="fa fa-dot-circle-o"></i> Submit
-                        </button>
-                    </div> -->
-
-                    <?php 
-                        if(isset($thongbao) && ($thongbao != ""))
-                            echo $thongbao;
-                        else echo $error;
-                    ?>
-                </form>
-
+                    
+                    
+                    </form>
             </div>
-        <!-- DATA TABLE -->
-        <h3 class="title-5 m-b-35">list product</h3>
+<!-- DATA TABLE -->
+<h3 class="title-5 m-b-35">list category</h3>
         <div class="table-data__tool">
             <div class="table-data__tool-left">
                 <div class="rs-select2--light rs-select2--md">
@@ -123,16 +92,18 @@ include ('inc/header.php');
                         <th>STT</th>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Price</th>
-                        <th>Img</th>
                         <th></th>
                     </tr>
                 </thead>
-
+                
+                <tbody>
+                    <?php
+                        // var_dump($kq); //kiem tra da len db chua
+                    ?>
                     <?php
                         if(isset($kq) && (count($kq)>0)){
                             $stt = 1;
-                            foreach($kq as $product){
+                            foreach($kq as $category){
                                 echo '<tr class="tr-shadow">
                                         <td>
                                             <label class="au-checkbox">
@@ -141,20 +112,20 @@ include ('inc/header.php');
                                             </label>
                                         </td>
                                         <td>'.$stt.'</td>
-                                        <td>'.$product['ID'].'</td>
-                                        <td>'.$product['Name'].'</td>
-                                        <td>'.$product['Price'].'VND</td>
-                                        <td><img src="'.$product['Img'].'" width="300px" alt=""/></td>
-                                        <td><a href="admin.php?act=delete&ID='.$product['ID'].'">Delete</a></td>
-                                        <td><a href="admin.php?act=update&ID='.$product['ID'].'">Update</a></td>
+                                        <td>'.$category['Category_ID'].'</td>
+                                        <td>
+                                            <span class="block-email">'.$category['CatName'].'</span>
+                                        </td>
+                                        <td><a href="admin.php?act=delcat&Category_ID='.$category['Category_ID'].'">Delete</a></td>
+                                        <td><a href="admin.php?act=updatecat&Category_ID='.$category['Category_ID'].'">Update</a></td>
                                         
                                         <td>
                                             <div class="table-data-feature">
                                                 <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                    <i class="zmdi zmdi-edit"><a href="admin.php?act=update&id='.$product['ID'].'"></i></a>
+                                                    <i class="zmdi zmdi-edit"><a href="admin.php?update_c&id='.$category['Category_ID'].'"></i></a>
                                                 </button>
                                                 <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                    <i class="zmdi zmdi-delete"><a href="admin.php?act=delete&id='.$product['ID'].'"></i></a>
+                                                    <i class="zmdi zmdi-delete"><a href="admin.php?act=delcat&Category_ID='.$category['Category_ID'].'"></i></a>
                                                 </button>
                                                 <button class="item" data-toggle="tooltip" data-placement="top" title="More">
                                                     <i class="zmdi zmdi-more"></i>
@@ -168,11 +139,13 @@ include ('inc/header.php');
                             }
                         }
                     ?>
-                <tbody>
-
                 </tbody>
             </table>
         </div>
         <!-- END DATA TABLE -->
     </div>
 </div>
+
+<?php
+    include ('inc/footer.php');
+?>
