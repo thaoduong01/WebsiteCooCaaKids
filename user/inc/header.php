@@ -107,13 +107,12 @@
                         <?php
                             if(isset($_SESSION['username']) && ($_SESSION['username']!="")){
                                 echo '<li><a class="dropdown-item" href="index.php?act=userinfo">'.$_SESSION['username'].'</a></li>';
+                                echo '<li><a class="dropdown-item" href="#">Profile</a></li>';
+                                echo '<li><a class="dropdown-item" href="#">Settings</a></li>';
+                                echo ' <li><hr class="dropdown-divider"></li>';
                                 echo '<li><a class="dropdown-item" href="index.php?act=logout">Logout</a></li>';
                             }else{
                         ?>
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Logout</a></li>
 
                             <li><a href="index.php?act=signup" class="nav-item nav-link">SignUp</a></li>
                             <li><a href="index.php?act=signin" class="nav-item nav-link">SignIn</a></li>

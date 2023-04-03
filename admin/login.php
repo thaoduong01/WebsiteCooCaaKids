@@ -9,20 +9,6 @@
         $username = $_POST['username'];
         $pass = $_POST['pass'];
 
-		// $kq = getuserinfo($username, $pass);
-
-		// if($kq){
-		// 	$_SESSION['username'] = $kq['Username'];
-		// 	$_SESSION['id'] = $kq['ID'];
-			
-		// 	if($kq['Role'] == 1) {
-		// 		header('Location: admin.php');
-		// 	}
-		// 	header('Location: ../user/index.php');
-		// }else{
-		// 	$txt_error = "Username or Pass khong ton tai";
-		// }
-
 		$kq = getuserinfo($username, $pass);
 
 		$role = $kq[0]['Role'];

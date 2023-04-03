@@ -50,7 +50,7 @@
                     }else{
                         $_SESSION['Role'] = $role;
                         $_SESSION['iduser'] = $kq[0]['ID'];
-                        $_SESSION['user'] = $kq[0]['Username'];
+                        $_SESSION['username'] = $kq[0]['Username'];
                         header('Location: index.php');
                     }
             
