@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost
--- Thời gian đã tạo: Th4 02, 2023 lúc 04:39 PM
+-- Thời gian đã tạo: Th4 03, 2023 lúc 08:24 PM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 8.1.12
 
@@ -70,53 +70,41 @@ CREATE TABLE `Product` (
   `Category_ID` int(11) NOT NULL,
   `Price` double(10,2) NOT NULL DEFAULT 0.00,
   `Img` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Details` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `View` int(11) NOT NULL DEFAULT 0,
-  `Supplier_ID` int(11) DEFAULT NULL
+  `Detail` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `View` int(6) NOT NULL DEFAULT 0,
+  `Supplier_ID` int(11) DEFAULT NULL,
+  `Old_price` double(10,2) NOT NULL DEFAULT 0.00,
+  `Special` tinyint(1) NOT NULL DEFAULT 0,
+  `Des` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `Product`
 --
 
-INSERT INTO `Product` (`ID`, `Name`, `Category_ID`, `Price`, `Img`, `Details`, `View`, `Supplier_ID`) VALUES
-(6, 'Ao Khoac', 33, 5434.00, 'b3.jpg', NULL, 0, NULL),
-(7, 't', 27, 2314.00, 'b3.jpg', NULL, 0, NULL),
-(12, 'quan', 5, 2131.00, 'b4.jpg', NULL, 0, NULL),
-(13, '41tr', 28, 12.00, 'b6.jpg', NULL, 0, NULL),
-(14, 't32', 6, 231.00, 'b6.jpg', NULL, 0, NULL),
-(16, 'Áo hoodie', 33, 35.00, 'b3.jpeg', NULL, 0, NULL),
-(23, 'áo', 27, 23.00, NULL, NULL, 0, NULL),
-(24, 're', 27, 23.00, NULL, NULL, 0, NULL),
-(25, 'ta', 27, 23.00, '../uploaded/Ảnh chụp Màn hình 2023-03-30 lúc 13.07.11.png', NULL, 0, NULL),
-(26, 'tr', 27, 2.00, '../uploaded/Ảnh chụp Màn hình 2023-03-28 lúc 15.58.47.png', NULL, 0, NULL),
-(27, '2', 27, 3.00, '../uploaded/female.png', NULL, 0, NULL),
-(28, 't', 27, 34.00, '../uploaded/b4.jpg', NULL, 0, NULL),
-(30, 'ty', 27, 23.00, '../uploaded/b3.jpeg', NULL, 0, NULL),
-(31, 'tu', 27, 34.00, '../uploaded/b4.jpg', NULL, 0, NULL),
-(32, 'to', 28, 34.00, '../uploaded/b2.jpg', NULL, 0, NULL),
-(33, '4', 27, 2.00, '../uploaded/b6.jpg', NULL, 0, NULL),
-(34, '4', 27, 2.00, '../admin//uploaded/b6.jpg', NULL, 0, NULL),
-(35, '4', 27, 2.00, './admin//uploaded/b6.jpg', NULL, 0, NULL),
-(36, '4', 27, 2.00, '../uploaded/b6.jpg', NULL, 0, NULL),
-(37, '4', 27, 2.00, '../uploaded/', NULL, 0, NULL),
-(38, '4', 27, 2.00, '../uploaded/', NULL, 0, NULL),
-(39, '4', 27, 2.00, '../uploaded/', NULL, 0, NULL),
-(40, '4', 27, 2.00, NULL, NULL, 0, NULL),
-(41, '4', 27, 2.00, '../uploaded/b6.jpg', NULL, 0, NULL),
-(42, '4', 27, 2.00, '../uploaded/b6.jpg', NULL, 0, NULL),
-(43, '4', 27, 2.00, '../uploaded/b6.jpg', NULL, 0, NULL),
-(44, '4', 27, 2.00, '../uploaded/b6.jpg', NULL, 0, NULL),
-(45, '4', 27, 2.00, '../uploaded/b6.jpg', NULL, 0, NULL),
-(47, '4', 27, 2.00, '../uploaded/b6.jpg', NULL, 0, NULL),
-(48, '4', 27, 2.00, '../uploaded/b6.jpg', NULL, 0, NULL),
-(49, '4', 27, 2.00, '../uploaded/b6.jpg', NULL, 0, NULL),
-(52, 'tr', 27, 21.89, '../uploaded/b1.jpg', NULL, 0, NULL),
-(53, 'tr', 27, 21.89, '../uploaded/b1.jpg', NULL, 0, NULL),
-(54, 't', 28, 21.00, '../uploaded/b1.jpg', NULL, 0, NULL),
-(55, 't', 28, 21.00, '../uploaded/b1.jpg', NULL, 0, NULL),
-(56, 'tr', 27, 2.00, '../uploaded/b7.jpg', NULL, 0, NULL),
-(57, 'tr', 27, 2.00, '../uploaded/b7.jpg', NULL, 0, NULL);
+INSERT INTO `Product` (`ID`, `Name`, `Category_ID`, `Price`, `Img`, `Detail`, `View`, `Supplier_ID`, `Old_price`, `Special`, `Des`) VALUES
+(28, 't1', 5, 345.00, '../uploaded/b4.jpg', 'quan jean ', 567, NULL, 450.00, 0, 'KK'),
+(30, 'ty', 27, 23.00, '../uploaded/b3.jpeg', NULL, 0, NULL, 0.00, 0, NULL),
+(31, 'tu', 27, 34.00, '../uploaded/b4.jpg', 'FFSWEWEQ', 32, NULL, 43.00, 0, NULL),
+(32, 'to', 28, 34.00, '../uploaded/b2.jpg', NULL, 0, NULL, 0.00, 0, NULL),
+(33, '4', 27, 2.00, '../uploaded/b6.jpg', NULL, 0, NULL, 0.00, 0, NULL),
+(36, '4', 27, 2.00, '../uploaded/b6.jpg', NULL, 0, NULL, 0.00, 0, NULL),
+(41, '4', 27, 2.00, '../uploaded/b6.jpg', NULL, 0, NULL, 0.00, 0, NULL),
+(42, '4', 27, 2.00, '../uploaded/b6.jpg', NULL, 0, NULL, 0.00, 0, NULL),
+(43, '4', 27, 2.00, '../uploaded/b6.jpg', NULL, 0, NULL, 0.00, 0, NULL),
+(44, '4', 27, 2.00, '../uploaded/b6.jpg', NULL, 0, NULL, 0.00, 0, NULL),
+(45, '4', 27, 2.00, '../uploaded/b6.jpg', NULL, 0, NULL, 0.00, 0, NULL),
+(47, '4', 27, 2.00, '../uploaded/b6.jpg', NULL, 0, NULL, 0.00, 0, NULL),
+(48, '4', 27, 2.00, '../uploaded/b6.jpg', NULL, 0, NULL, 0.00, 0, NULL),
+(49, '4', 27, 2.00, '../uploaded/b6.jpg', NULL, 0, NULL, 0.00, 0, NULL),
+(52, 'tr', 27, 21.89, '../uploaded/b1.jpg', NULL, 0, NULL, 0.00, 0, NULL),
+(53, 'tr', 27, 21.89, '../uploaded/b1.jpg', NULL, 0, NULL, 0.00, 0, NULL),
+(54, 't', 28, 21.00, '../uploaded/b1.jpg', NULL, 0, NULL, 0.00, 0, NULL),
+(55, 't', 28, 21.00, '../uploaded/b1.jpg', NULL, 0, NULL, 0.00, 0, NULL),
+(56, 'tr', 27, 2.00, '../uploaded/b7.jpg', NULL, 0, NULL, 0.00, 0, NULL),
+(57, 'tr', 27, 2.00, '../uploaded/b7.jpg', NULL, 0, NULL, 0.00, 0, NULL),
+(58, 'tr', 27, 2.00, '../uploaded/b7.jpg', NULL, 0, NULL, 0.00, 0, NULL),
+(59, 'r', 27, 21.89, '../uploaded/b7.jpg', NULL, 0, NULL, 0.00, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -130,6 +118,13 @@ CREATE TABLE `Supplier` (
   `Email` varchar(50) NOT NULL,
   `Address` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `Supplier`
+--
+
+INSERT INTO `Supplier` (`Supplier_ID`, `Name`, `Email`, `Address`) VALUES
+(1, 'K', 'k@gmail.com', 'TP HCM');
 
 -- --------------------------------------------------------
 
@@ -213,13 +208,13 @@ ALTER TABLE `Order_`
 -- AUTO_INCREMENT cho bảng `Product`
 --
 ALTER TABLE `Product`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT cho bảng `Supplier`
 --
 ALTER TABLE `Supplier`
-  MODIFY `Supplier_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Supplier_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `User`
