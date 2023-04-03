@@ -11,19 +11,34 @@
 
 		$kq = getuserinfo($username, $pass);
 
-		$role = $kq[0]['Role'];
-
-		if ($role == 1) {
-			$_SESSION['Role'] = $role;
-			header('Location: ../admin/admin.php');
-		} else if (!empty($kq)) {
-			$_SESSION['Role'] = $role;
-			$_SESSION['iduser'] = $kq[0]['ID'];
-			$_SESSION['user'] = $kq[0]['Username'];
+		if($kq){
+			$_SESSION['username'] = $kq['Username'];
+			$_SESSION['id'] = $kq['ID'];
+			
+			if($kq['Role'] == 1) {
+				header('Location: admin.php');
+			}
 			header('Location: ../user/index.php');
-		} else {
+		}else{
 			$txt_error = "Username or Pass khong ton tai";
 		}
+
+		// $kq = getuserinfo($username, $pass);
+
+		// $role = $kq[0]['Role'];
+
+		// if ($role == 1) {
+		// 	$_SESSION['Role'] = $role;
+		// 	header('Location: admin.php');
+		// } else if (!empty($kq)) {
+
+		// 	$_SESSION['Role'] = $role;
+		// 	$_SESSION['iduser'] = $kq[0]['ID'];
+		// 	$_SESSION['user'] = $kq[0]['Username'];
+		// 	header('Location: ../user/index.php');
+		// } else {
+		// 	$txt_error = "Username or Pass khong ton tai";
+		// }
 		
 		 // $role = checkuser($username, $pass);
 

@@ -22,7 +22,7 @@
         $stmt->execute();
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC); //tra ve dang mang
 
-        $kq = $stmt->fetch(); //lay tat ca
+        $kq = $stmt->fetchAll(); //lay tat ca
 
         return $kq;
     }
