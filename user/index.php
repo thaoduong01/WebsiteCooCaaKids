@@ -2,6 +2,7 @@
     session_start();
     ob_start();
 
+    
     // include ('inc/header.php');
     // include ('inc/slider.php');
 
@@ -20,7 +21,7 @@
              //category
 
              case 'signup':
-                include "view/signup.php";
+                include "signup.php";
                 break;
 
             case 'login':
@@ -30,32 +31,32 @@
 
                     $kq = getuserinfo($username, $pass);
 
-                    // if($kq){
-                    //     $_SESSION['username'] = $kq['Username'];
-                    //     $_SESSION['id'] = $kq['ID'];
-                    //     if($kq['Role'] == 1) {
-                    //         header('Location: ../admin/admin.php');
-                    //     }
-                    //     header('Location: index.php');
-                    // }else{
-                    //     $txt_error = "Username or Pass khong ton tai";
-                    // }
-
-                    $role = $kq[0]['Role'];
-                    if($role == 1){
-                        $_SESSION['Role'] = $role;
-                        header('Location: ../admin/admin.php');
-                    }else{
-                        $_SESSION['Role'] = $role;
-                        $_SESSION['iduser'] = $kq[0]['ID'];
-                        $_SESSION['user'] = $kq[0]['Username'];
+                    if($kq){
+                        $_SESSION['username'] = $kq['Username'];
+                        $_SESSION['id'] = $kq['ID'];
+                        if($kq['Role'] == 1) {
+                            header('Location: ../admin/admin.php');
+                        }
                         header('Location: index.php');
+                    }else{
+                        $txt_error = "Username or Pass khong ton tai";
                     }
+
+                    // $role = $kq[0]['Role'];
+                    // if($role == 1){
+                    //     $_SESSION['Role'] = $role;
+                    //     header('Location: ../admin/admin.php');
+                    // }else{
+                    //     $_SESSION['Role'] = $role;
+                    //     $_SESSION['iduser'] = $kq[0]['ID'];
+                    //     $_SESSION['user'] = $kq[0]['Username'];
+                    //     header('Location: index.php');
+                    // }
             
                 }
                
             case 'signin':
-                include "view/login.php";
+                include "login.php";
                 break;
 
             case 'logout':

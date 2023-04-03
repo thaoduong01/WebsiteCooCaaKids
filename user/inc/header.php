@@ -89,15 +89,7 @@
                         </div>
                     </div>
                     <a href="contact.php" class="nav-item nav-link">Contact Us</a>
-                    <?php
-                        if(isset($_SESSION['username']) && ($_SESSION['username'] != "")){
-                            echo '<li><a href="index.php?act=userinfo">'.$_SESSION['username'].'</a></li>';
-                            echo '<li><a href="index.php?act=logout">Logout</a></li>';
-                        }else{
-                    ?>
-                        <a href="index.php?act=signup" class="nav-item nav-link">SignUp</a>
-                        <a href="index.php?act=signin" class="nav-item nav-link">SignIn</a>
-                    <?php } ?>
+                  
                 </div>
                 <div class="d-none d-lg-flex ms-2">
                     <a class="btn-sm-square bg-white rounded-circle ms-3" href="">
