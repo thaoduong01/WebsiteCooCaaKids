@@ -1,8 +1,3 @@
-<?php
-    include "../lib/session.php";
-    // Session::checkSession();
-       
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -373,6 +368,12 @@
                                     </div>
                                 </div>
                                 <div class="account-wrap">
+                                    <?php
+                                        if(isset($_SESSION['username']) && ($_SESSION['username']!="")){
+                                            echo '<li><a class="dropdown-item" href="index.php?act=userinfo">'.$_SESSION['username'].'</a></li>';
+                                            echo '<li><a class="dropdown-item" href="index.php?act=logout">Logout</a></li>';
+                                        }
+                                    ?>
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
                                             <img src="images/icon/avatar-01.jpg" alt="John Doe" />
