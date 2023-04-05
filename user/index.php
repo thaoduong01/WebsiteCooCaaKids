@@ -85,7 +85,13 @@
                             $tensp = $_POST['Name'];
                             $img = $_POST['Img'];
                             $gia = $_POST['Price'];
-                            $sl = 1;
+                            
+                            // tồn tại thêm số lượng 
+                            if(isset($_POST['sl'])&&($_POST['addtocart'])){
+                                $sl=$_POST['sl'];
+                            }else{
+                                $sl=1;
+                            }
                             $fg = 0; // Nếu cờ này =0 thì $sl không thay đổi
                             // Kiểm tra sản phẩm có tồn tại trong giỏ hàng không?
                             // Nếu có chỉ cập nhật số lượng
