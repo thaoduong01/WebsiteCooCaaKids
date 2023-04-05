@@ -1,8 +1,8 @@
 <?php
     session_start();
-    // kiểm tra giỏ hàng có tồn tại không
-    if(!isset($_SESSION['giohang'])) $_SESSION['giohang']=[];//khởi tạo giỏ hàng rỗng
+    if(!isset($_SESSION['giohang'])) $_SESSION['giohang']=[];
     ob_start();
+    
 
     
     // include ('inc/header.php');
@@ -12,6 +12,8 @@
     include "../model/user.php";
     include "../model/category.php";
     include "../model/product.php";
+
+    
 
     $listcat = getall_c();
     $sphome1 = getall(0, "");
@@ -75,45 +77,42 @@
                 $list = getall($idcat, "");
                 include "view/product.php";
                 break;
-
-            
-            case 'addcart':
-                //lấy dữ liệu từ form lưu vào giỏ hàng
-
-                if(isset($_POST['addtocart'])&&($_POST['addtocart'])){
-                    $tensp = $_POST['Name'];
-                    $img = $_POST['Img'];
-                    $gia = $_POST['Price'];
-                    if(isset($_POST['sl'])&&($_POST['sl']>0)){
-                        $sl = $_POST['sl'];
-                    }else{
-                        $sl = 1;
-                    }
-                    $sl=1;
-                    $fg=0;
-                    //kiem tra san pham co ton tai trong gio hang khong?
-                    //neu co chi cap nhat so luong
-                    $i=0;
-                    foreach($_SESSION['giohang'] as $item){
-                        if($item[1]===$tensp){
-                            $slmoi = $sl+$item[4];
-                            $_SESSION['giohang'][$i][4]+=$slmoi; 
-                            $fg=1;
-                            break;
+                
+                
+                case 'addcart':
+                    if (isset($_POST['addtocart']) && ($_POST['addtocart'])) {
+                            $id = $_POST['ID'];
+                            $tensp = $_POST['Name'];
+                            $img = $_POST['Img'];
+                            $gia = $_POST['Price'];
+                            $sl = 1;
+                            $fg = 0; // Nếu cờ này =0 thì $sl không thay đổi
+                            // Kiểm tra sản phẩm có tồn tại trong giỏ hàng không?
+                            // Nếu có chỉ cập nhật số lượng
+                            $i = 0;
+                            foreach ($_SESSION['giohang'] as $item) {
+                                if ($item[1] === $tensp) {
+                                    $slmoi = $sl + $item[4];
+                                    $_SESSION['giohang'][$i][4] = $slmoi;
+                                    $fg = 1;
+                                    break;
+                                }
+                                $i++;
+                            }
+                            // Khởi tạo 1 mảng con trước khi đưa vào giỏ hàng
+                            if ($fg == 0) {
+                                $item = array($id, $tensp, $img, $gia, $sl);
+                                $_SESSION['giohang'][] = ($item);
+                            }
+                            header('Location: index.php?act=viewcart');
+                        } else {
+                            include 'view/viewcart.php';
                         }
-                    }
-
-                    //khỏi tạo 1 mảng con trước khi đưa vào giỏ hàng
-                    if($if==0){
-                        $item = array($id, $tensp, $img, $gia, $sl);
-                        $_SESSION['giohang'][]=$item;
-                    }
-                    header('location: viewcart.php');
-                }
-
-                //view giỏ hàng
-                include "viewcart.php";
-                break;
+                        break;
+                    
+            
+                
+                
 
             case 'delcart':
                 if(isset($_SESSION['giohang'])) unset($_SESSION['giohang']);

@@ -126,7 +126,7 @@
                             </div>
                         </div>
                             <input type="hidden" value"'.$product['ID'].'" name ="id" >
-                            <input type="hidden" value"'.$product['Name'].'" name ="nsme" >
+                            <input type="hidden" value"'.$product['Name'].'" name ="name" >
                             <input type="hidden" value"'.$product['Img'].'" name ="img" >
                             <input type="hidden" value"'.$product['Price'].'" name ="price" >
                         </form>
