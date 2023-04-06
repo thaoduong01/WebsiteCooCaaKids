@@ -3,7 +3,7 @@
      ob_start();
 
 
-     // if(isset($_SESSION['Role'])&& ($_SESSION['Role']==1)){
+     if(isset($_SESSION['Role'])&& ($_SESSION['Role']==1)){
 
      include "../model/connect.php";
      include "../model/category.php";
@@ -304,8 +304,8 @@
 
      include "inc/footer.php";
 
-// }else{
-//      header('Location: login.php');
-// }
+}else{
+     header('Location: login.php');
+}
 
 ?>

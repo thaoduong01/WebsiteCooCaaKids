@@ -121,7 +121,7 @@
                         </ul>
                     </div>
 
-                    <a class="btn-sm-square bg-white rounded-circle ms-3" href="index.php?act=viewcart">
+                    <a class="btn-sm-square bg-white rounded-circle ms-3" href="viewcart.php">
                         <small class="fa fa-shopping-bag text-body"></small>
                     </a>
                 </div>

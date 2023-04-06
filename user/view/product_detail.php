@@ -15,6 +15,7 @@
 <div class="container">
     <div class="row g-5 align-items-center">
         <?php
+            $id = $detail['ID'];
             $name = $detail['Name'];
             $price = $detail['Price'];
             $oldprice = $detail['Old_price'];
@@ -29,9 +30,6 @@
             <p class="text-white mb-0"><?=$price?> VND</p>
             <p class="text-white mb-0"><?=$de?></p>
         </div>
-        <div class="col-md-5 text-md-end wow fadeIn" data-wow-delay="0.5s">
-            <a class="btn btn-lg btn-secondary rounded-pill py-3 px-5" href="">Visit Now</a>
-        </div>
 
         <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
             <div class="product-item">
@@ -43,11 +41,26 @@
                     <span class="text-primary me-1"><?=$price?> VND</span>
                     <span class="text-body text-decoration-line-through"><?=$oldprice?> VND</span>
                 </div>
-                <div class="d-flex border-top">
+
+                <input type="hidden" value = "<?=$img?>" name ="img" >
+                <input type="hidden" value = "<?=$name?>" name ="name" >
+                <input type="hidden" value = "<?=$price?>" name ="price" >
+                <input type="hidden" value = "<?=$id?>" name ="id" >
+
+                <!-- <div class="d-flex border-top">
                     <small class="w-50 text-center py-2">
+                        <input type="number" value="1" min="1" max="50" required=""/> |
                         <a class="text-body" href=""><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
                     </small>
-                </div>
+                </div> -->
+
+                
+                <form action="index.php?act=addcart" method="post">
+                    <div class="col-md-5 text-md-end wow fadeIn" data-wow-delay="0.5s">
+                        <input type="number" value="1" min="1" max="50" required="" name="sl"/> | 
+                        <button value="submit" class="btn btn-lg btn-secondary rounded-pill py-3 px-5" name="addtocart">Add to cart</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

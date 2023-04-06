@@ -22,7 +22,7 @@ include ('inc/header.php');
                             <?php
                                 if(isset($thongbao) && ($thongbao != ""))
                                     echo $thongbao;
-                                else echo $error;
+                                // else echo $error;
                             ?>
                             </small>
                         </div>
