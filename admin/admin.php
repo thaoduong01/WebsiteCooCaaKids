@@ -3,7 +3,7 @@
      ob_start();
 
 
-     // if(isset($_SESSION['Role'])&& ($_SESSION['Role']==1)){
+     if(isset($_SESSION['Role'])&& ($_SESSION['Role']==1)){
 
      include "../model/connect.php";
      include "../model/category.php";
@@ -221,7 +221,7 @@
 
                     //sp theo getid
                     if(isset($_GET['ID']) && ($_GET['ID']>0)){
-                         $sp = getid($_GET['ID']);
+                         $sp = getpro($_GET['ID']);
      
                          $listcat = getall_c();
                          $kq = getall_p();
@@ -235,48 +235,49 @@
                          $price = $_POST['price'];
                          $id = $_POST['id'];
      
-                         if($_FILE['img']['name']){
-                              //tao thu muc de chua anh
-                              $target_dir = "../uploaded/";
-     
-                              //tao duong dan file sau khi upload len he thong
-                              $target_file = $target_dir.basename($_FILES["img"]["name"]);
-                              $img = $target_file;
-                              $uploadOk = 1; //upload dc
-     
-                              //Kiem tra dieu kien upload
-                                   //kiem tra kich thuoc(5MB <=> 5242880 bytes)
+                         if(isset($_POST['add']) && $_POST['add'] == 'ADD') {
+                              $name = $_POST['name'];
+                              $idcat = $_POST['idcat'];
+                              $price = $_POST['price'];
+                           
+                              if($_FILES['img']['name'] != ""){
+                                   $target_dir = "../uploaded/";
+                                   if(!file_exists($target_dir)) {
+                                   mkdir($target_dir);
+                                   }
                               
-                              if($_FILES['img']['size'] > 5242880){
-                                   $error['img'] = ['Kich thuoc lon hon 5mb'];
-                              }
-     
-                                   //kiem tra file da ton tai
-                              // print_r($error);
-                              if(file_exists($target_file))
-                                   $error['img'] = "Da ton tai";
-     
-                              $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-     
-                              if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                              && $imageFileType != "gif" ) {
-                                   //  echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-                                   $uploadOk = 0; //ko upload
-                         }
-     
-                         //kiem tra va chuyen file tu bo nho tam len server
-                         if($uploadOk==1){
-                              if(move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)){
-                                   echo "Upload img successfully!";
+                                   $target_file = $target_dir . basename($_FILES["img"]["name"]);
+                                   $img = $target_file;
+                                   $uploadOk = 1;
+                              
+                                   $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+                              
+                                   if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+                                   $uploadOk = 0;
+                                   }
+
+                                   if($uploadOk == 1)
+                                        move_uploaded_file($_FILES["img"]["tmp_name"], $target_file);
+
+                                   // if($uploadOk == 0) {
+                                   // echo "Sorry, your file was not uploaded.";
+                                   // } else {
+                                   // if(move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
+                                   //      echo "The file ". htmlspecialchars( basename( $_FILES["img"]["name"])). " has been uploaded.";
+                                   // } else {
+                                   //      echo "Sorry, there was an error uploading your file.";
+                                   // }
+                              
+                                   // update($id, $name, $price, $img, $idcat);
+                                   // }
                               }else{
-                                   echo "Upload img failed!";
+                                   $img = "";
                               }
-                              }else $img="";
-     
+
+                              
                          }
-     
+                         
                          update($id, $name, $price, $img, $idcat);
-     
                          $kq = getall_p();
                          include "product/product.php";
                     }
@@ -304,8 +305,8 @@
 
      include "inc/footer.php";
 
-// }else{
-//      header('Location: login.php');
-// }
+}else{
+     header('Location: login.php');
+}
 
 ?>

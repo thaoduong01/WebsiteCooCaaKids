@@ -83,7 +83,51 @@
                 include "view/product_detail.php";
                 break;
 
-            case 'viewcart':
+            case 'addcart':
+                //lấy dữ liệu từ form lưu vào giỏ hàng
+
+                if(isset($_POST['addtocart'])&&($_POST['addtocart'])){
+                    $tensp = $_POST['Name'];
+                    $img = $_POST['Img'];
+                    $gia = $_POST['Price'];
+                    if(isset($_POST['sl'])&&($_POST['sl']>0)){
+                        $sl = $_POST['sl'];
+                    }else{
+                        $sl = 1;
+                    }
+                    $sl=1;
+                    $fg=0;
+                    //kiem tra san pham co ton tai trong gio hang khong?
+                    //neu co chi cap nhat so luong
+                    $i=0;
+                    foreach($_SESSION['giohang'] as $item){
+                        if($item[1]===$tensp){
+                            $slmoi = $sl+$item[4];
+                            $_SESSION['giohang'][$i][4]+=$slmoi; 
+                            $fg=1;
+                            break;
+                        }
+                    }
+
+                    //khỏi tạo 1 mảng con trước khi đưa vào giỏ hàng
+                    if($if==0){
+                        $item = array($id, $tensp, $img, $gia, $sl);
+                        $_SESSION['giohang'][]=$item;
+                    }
+                    header('location: viewcart.php');
+                }
+
+                //view giỏ hàng
+                include "view/viewcart.php";
+                break;
+
+                case 'delcart':
+                    if(isset($_SESSION['giohang'])) unset($_SESSION['giohang']);
+                    header('location: index.php?act=viewcart');
+                    
+                    include "view/viewcart.php";
+                    break;    
+    
 
 
             

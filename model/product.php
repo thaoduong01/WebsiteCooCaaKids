@@ -11,7 +11,7 @@
         return $kq;
     }
 
-    function getid($id){
+    function getpro($id){
         $conn = connect();
 
         $stmt = $conn->prepare("SELECT * FROM Product WHERE ID =".$id);
@@ -116,7 +116,7 @@
                                 <a class="text-body" href="index.php?act=detail&ID='.$product['ID'].'"><i class="fa fa-eye text-primary me-2"></i>View detail</a>
                             </small>
                             <small class="w-50 text-center py-2">
-                                <a class="text-body" href=""><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
+                                <a class="text-body" href="index.php?act=addcart"><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
                             </small>
                         </div>
                     </div>

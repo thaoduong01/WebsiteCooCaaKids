@@ -1,6 +1,6 @@
 <?php
     function connect(){
-        $servername = "localhost";
+        $servername = "ngoc-thao.local";
         $username = "root";
         $password = "";
 
