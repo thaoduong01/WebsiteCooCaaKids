@@ -58,6 +58,29 @@ include ('inc/header.php');
                         </div>
                     </div>
 
+                    <!-- <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="file-input" class=" form-control-label">Detail</label>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <textarea id="" name="detail" class="form-control-file"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="file-input" class=" form-control-label">Descripton</label>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <textarea id="" name="desc" class="form-control-file"></textarea>
+                        </div>
+                    </div> -->
+
+
+
+                
+                
+
                     <input type="submit" name="add" value="ADD" style="background-color: blue; border: none; color: white; padding: 4px 8px; text-decoration: none; margin: 4px 2px; cursor: pointer;">
 
 
@@ -148,19 +171,7 @@ include ('inc/header.php');
                                         <td><a href="admin.php?act=delete&ID='.$product['ID'].'">Delete</a></td>
                                         <td><a href="admin.php?act=update&ID='.$product['ID'].'">Update</a></td>
                                         
-                                        <td>
-                                            <div class="table-data-feature">
-                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                    <i class="zmdi zmdi-edit"><a href="admin.php?act=update&id='.$product['ID'].'"></i></a>
-                                                </button>
-                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                    <i class="zmdi zmdi-delete"><a href="admin.php?act=delete&id='.$product['ID'].'"></i></a>
-                                                </button>
-                                                <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                    <i class="zmdi zmdi-more"></i>
-                                                </button>
-                                            </div>
-                                        </td>
+                                        
                                     </tr>
                                     <tr class="spacer"></tr>';
 

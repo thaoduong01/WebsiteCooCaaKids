@@ -68,6 +68,18 @@
                 unset($_SESSION['username']);
                 header('Location: login.php');
 
+
+            case 'search':
+                if(isset($_POST['search'])){
+                    $nd = $_POST['nd'];
+                }else $nd = false;
+
+                $result = getall($nd);
+
+                include "index.php";
+                break;
+
+
             case 'product':
                 if(isset($_GET['Category_ID']) && ($_GET['Category_ID'])){
                     $idcat = $_GET['Category_ID'];

@@ -9,8 +9,8 @@
     $price = $detail[0]['Price'];
     $oldprice = $detail[0]['Old_price'];
     $view = $detail[0]['View'];
-    $desc = $detail[0]['Des'];
-    $de = $detail[0]['Detail'];
+    // $desc = $detail[0]['Mota'];
+    $ct = $detail[0]['Detail'];
     $img = $detail[0]['Img'];
 
 ?>
@@ -35,7 +35,8 @@
             <span class="new-price"><?=$price?> VND</span>
             <span class="old-price"><?=$oldprice?> VND</span>
           </div>
-          <p class="product-description"><?=$de?></p>
+          <br/>
+          <p class="product-description"><?=$ct?></p>
           <form action="index.php?act=addcart" method="post">
             <div class="product-quantity">
               <label for="quantity">Quantity:</label>

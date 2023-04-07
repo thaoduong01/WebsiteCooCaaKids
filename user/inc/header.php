@@ -73,7 +73,7 @@
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
                     <a href="index.php" class="nav-item nav-link active">Home</a>
                     <a href="about.php" class="nav-item nav-link">About Us</a>
-                    <a href="product.php" class="nav-item nav-link">Products</a>
+                    <a href="index.php" class="nav-item nav-link">Products</a>
                     <div class="nav-item dropdown">
                         <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Category</a>
                         <div class="dropdown-menu m-0">
@@ -91,10 +91,21 @@
                     <a href="contact.php" class="nav-item nav-link">Contact Us</a>
                   
                 </div>
-                <div class="d-none d-lg-flex ms-2">
-                    <a class="btn-sm-square bg-white rounded-circle ms-3" href="">
-                        <small class="fa fa-search text-body"></small>
-                    </a>
+                
+                <form action="index.php?act=search" method="post">
+                    <div class="d-none d-lg-flex ms-2">
+                        <input type="text" value="" name="nd">
+                        <button class="btn-sm-square bg-white rounded-circle ms-3" type="submit" nam="search">
+                            <small class="fa fa-search text-body"></small>
+                        </button>
+                </form>
+                <?php
+                    // if(isset($_POST['search'])){
+                    //     $nd = $_POST['nd'];
+                    // }else $nd = false;
+
+                    // $result = getall($nd);
+                ?>
                     <!-- <a class="btn-sm-square bg-white rounded-circle ms-3" href="">
                         <small class="fa fa-user text-body"></small>
                     </a> -->

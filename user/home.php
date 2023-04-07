@@ -21,7 +21,7 @@
             <p><i class="fa fa-check text-primary me-3"></i>Tất cả là hàng có sẵn và được nhập trực tiếp từ TQ, không qua trung gian.</p>
             <p><i class="fa fa-check text-primary me-3"></i>Shop cam kết bán hàng chất lượng đẹp như hình ánh shop đăng.</p>
             <p class="mb-4">Mong ba mẹ ủng hộ ạ!</p>
-            <a class="btn btn-primary rounded-pill py-3 px-5 mt-3" href="">Read More</a>
+            <a class="btn btn-primary rounded-pill py-3 px-5 mt-3" href="about.php">Read More</a>
         </div>
     </div>
 </div>
@@ -74,33 +74,9 @@
         <div class="col-lg-6">
             <div class="section-header text-start mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <h1 class="display-5 mb-3">Our Products</h1>
-                <p>Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
+                <p>Quần áo em bé - style Hàn Quốc - kiểu dáng basic - màu sắc vintage.</p>
             </div>
         </div>
-        <!-- <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
-            <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
-                <li class="nav-item me-2">
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle btn btn-outline-primary border-2" data-bs-toggle="dropdown">Áo</a>
-                        <div class="btn btn-outline-primary border-2 dropdown-menu m-0">
-                            <a href="blog.html" class="dropdown-item">Áo Khoác, Áo Ấm</a>
-                            <a href="feature.html" class="dropdown-item">Hoodie, Sweater</a>
-                            <a href="testimonial.html" class="dropdown-item">Áo Len</a>
-                            <a href="404.html" class="dropdown-item">Áo Sơ Mi</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item me-2">
-                    <a class="btn btn-outline-primary border-2" data-bs-toggle="pill" href="#tab-2">Yếm </a>
-                </li>
-                <li class="nav-item me-2">
-                    <a class="btn btn-outline-primary border-2" data-bs-toggle="pill" href="#tab-2">Quần Dài Jean/Kaki </a>
-                </li>
-                <li class="nav-item me-0">
-                    <a class="btn btn-outline-primary border-2" data-bs-toggle="pill" href="#tab-3">Quần Short, Quần Lửng</a>
-                </li>
-            </ul>
-        </div> -->
     </div>
     <div class="tab-content">
         <div id="tab-1" class="tab-pane fade show p-0 active">
@@ -125,10 +101,10 @@
     <div class="row g-5 align-items-center">
         <div class="col-md-7 wow fadeIn" data-wow-delay="0.1s">
             <h1 class="display-5 text-white mb-3">Visit Our Firm</h1>
-            <p class="text-white mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos.</p>
+            <p class="text-white mb-0">Quần áo em bé - style Hàn Quốc - kiểu dáng basic - màu sắc vintage.</p>
         </div>
         <div class="col-md-5 text-md-end wow fadeIn" data-wow-delay="0.5s">
-            <a class="btn btn-lg btn-secondary rounded-pill py-3 px-5" href="">Visit Now</a>
+            <a class="btn btn-lg btn-secondary rounded-pill py-3 px-5" href="about.php">Visit Now</a>
         </div>
     </div>
 </div>

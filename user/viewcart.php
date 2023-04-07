@@ -12,6 +12,7 @@
     ?>
   <h2>Giỏ hàng</h2>
  <?php
+    $tong = 0;
     if((isset($_SESSION['giohang'])) && (is_array($_SESSION['giohang'])) && (count($_SESSION['giohang'])>0)){
         echo '<table>
                 <thead>
@@ -33,7 +34,7 @@
                         $tt = str_repeat($item[2], $item[4]);
                         $tong += $tt;
                         echo '<tbody>
-                                <td>'.($i+1).'</td>
+                                <td>'.$i.'</td>
                                 <td>'.$item[1].'</td>
                                 <td>'.$item[2].'</td>
                                 <td><img src="../uploaded/'.$item[0].'" width="200px"</td>
@@ -44,10 +45,11 @@
                         $i++;
                     }
                 }
+                $item[4]++;
             
                 echo '</table>';
             echo ' <div class="cart-summary">
-                        <p>Tổng số sản phẩm: <span id="total-items">'.$i.'</span></p>
+                        <p>Tổng số sản phẩm: <span id="total-items">'.$item[4].'</span></p>
                         <p>Tổng giá trị: <span id="total-price">'.$tong.' VN</span></p>
                         <a href="index.php?act=delcart"><button id="checkout-btn">Xóa giỏ hàng</button></a> | 
                         <a href="index.php"><button id="checkout-btn">Tiếp</button></a>

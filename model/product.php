@@ -117,8 +117,8 @@
                                 </small>
                             <form action="index.php?act=addcart" method="post">
                                 <small class="w-50 text-center py-2">
-                                    <a class="text-body" href="" name="addtocart"><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
-                                    <input type="submit" value="Addcart" name="addtocart"/>
+                                   
+                                    <button class="text-body" value="submit" name="addtocart"><i class="fa fa-shopping-bag text-primary me-2"></i>Add to cart</button>
                                     </small>
                             </div>
 

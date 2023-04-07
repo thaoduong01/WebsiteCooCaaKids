@@ -144,6 +144,8 @@
                          $name = $_POST['name'];
                          $idcat = $_POST['idcat'];
                          $price = $_POST['price'];
+                         // $detail = $_POST['detail'];
+                         // $desc = $_POST['desc'];
                       
                          $target_dir = "../uploaded/";
                          if(!file_exists($target_dir)) {
